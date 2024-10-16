@@ -103,7 +103,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH }}
         passphrase: ${{ secrets.SSH_PASSWORD }}
-        source: "hotel_podstepki/static"
+        source: "static"
         target: "/home/incub/hotel_podstepki/static"
 
     - name: Executing remote ssh commands to deploy
