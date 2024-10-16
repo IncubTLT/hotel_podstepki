@@ -1,0 +1,324 @@
+.shbdp-clearfix {
+    zoom: 1;
+}
+
+.shbdp-clearfix:before,
+.shbdp-clearfix:after {
+    content: "";
+    display: table;
+}
+
+.shbdp-clearfix:after {
+    clear: both;
+}
+
+.shbdp-clearboth {
+    clear: both;
+}
+
+.shbdp-cal-item {
+    display: none;
+}
+
+.shbdp-current-cal {
+    display: block;
+}
+
+body .shbdp-cal-item .shbdp-cal-table-wrapper table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body .shbdp-cal-item table thead tr th,
+body .shbdp-cal-item table tr:nth-child(2n),
+body .shbdp-cal-item table tr {
+    background: transparent;
+}
+
+body .shbdp-cal-item table thead tr th,
+body .shbdp-cal-item table tbody tr td {
+    text-align: center;
+    padding: 0;
+}
+
+body .shbdp-cal-item .shbdp-cal-table-wrapper:first-child {
+    width: calc(50% - 31px);
+    float: left;
+    border-right: #424242 1px solid;
+    padding: 0 30px 0 0;
+}
+
+body .shbdp-cal-item .shbdp-cal-table-wrapper:last-child {
+    width: calc(50% - 30px);
+    float: right;
+}
+
+body .shbdp-cal-item .shbdp-cal-table-wrapper table {
+    width: 100%;
+    margin: 0;
+    table-layout: fixed;
+}
+
+body .shbdp-cal-item table thead tr th {
+    font-size: 14px;
+    padding: 13px 7px;
+    border-bottom: #424242 1px solid;
+}
+
+body .shbdp-cal-item table tbody tr td {
+    background: #424242;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 7px;
+    border-right: #1c1c1c 1px solid;
+    border-bottom: #1c1c1c 1px solid;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    cursor: default;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date-live {
+    -webkit-transition: all 0s ease-in-out;
+    -moz-transition: all 0s ease-in-out;
+    -o-transition: all 0s ease-in-out;
+    -ms-transition: all 0s ease-in-out;
+    transition: all 0s ease-in-out;
+}
+
+body .shbdp-cal-item table thead tr th {
+    font-family: inherit;
+}
+
+.shbdp-cal-hidden {
+    visibility: hidden;
+}
+
+.shbdp-cal-wrapper {
+    position: relative;
+    z-index: 99;
+    background: #1c1c1c;
+    color: #fff;
+}
+
+.shbdp-cal-wrapper .shbdp-cal-prev-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    background: transparent;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.shbdp-cal-wrapper .shbdp-cal-next-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: transparent;
+    background: transparent;
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.shbdp-cal-wrapper .shbdp-cal-prev-btn:after {
+    content: "\f104";
+    padding: 2px 2px 0 0;
+}
+
+.shbdp-cal-wrapper .shbdp-cal-next-btn:after {
+    content: "\f105";
+    padding: 2px 0 0 2px;
+}
+
+.shbdp-cal-wrapper .shbdp-cal-prev-btn:after,
+.shbdp-cal-wrapper .shbdp-cal-next-btn:after {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    display: block;
+    text-align: center;
+    background: #fff;
+    color: #424242;
+    -webkit-border-radius: 99%;
+    -moz-border-radius: 99%;
+    -o-border-radius: 99%;
+    border-radius: 99%;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-max {
+    background: #292929;
+    color: #7b7b7b;
+}
+
+body .shbdp-cal-item table thead tr th.shbdp-cal-month-name {
+    padding: 0 7px 20px 7px;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-enabled {
+    cursor: pointer;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date-live {
+    background: #85705c;
+    color: #fff;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date {
+    background: #b99470;
+    color: #fff;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-enabled:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin {
+    background: #b99470;
+    color: #fff;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-unavailable,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-unavailable:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-checkin-disabled:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min.shbdp-cal-unavailable.shbdp-cal-enabled:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-max.shbdp-cal-unavailable.shbdp-cal-enabled:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only.shbdp-cal-disable-max,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only.shbdp-cal-disable-max:hover {
+    background: url(images/unavailable.png) no-repeat center #292929;
+    color: rgba(255, 255, 255, 0);
+    cursor: default;
+    -webkit-transition: all 0s ease-in-out;
+    -moz-transition: all 0s ease-in-out;
+    -o-transition: all 0s ease-in-out;
+    -ms-transition: all 0s ease-in-out;
+    transition: all 0s ease-in-out;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled:hover {
+    background: #292929;
+    color: #7b7b7b;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only:hover {
+    background: #b99470;
+    color: #fff;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout:hover {
+    background: #b99470;
+    color: #fff;
+}
+
+body .shbdp-cal-selected-dates p {
+    color: #fff;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    line-height: 160%;
+    margin: 0 0 10px 0;
+}
+
+.shbdp-cal {
+    border-bottom: #424242 1px solid;
+    padding: 0 0 27px 0;
+    margin: 0 0 27px 0;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min:hover,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-max:hover {
+    background: #292929;
+    color: #7b7b7b;
+    cursor: default;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min.shbdp-cal-selected-date-live:hover {
+    background: #85705c;
+    color: #fff;
+}
+
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin,
+body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin:hover {
+    background: #b99470;
+    color: #fff;
+}
+
+body .shbdp-cal-panels-1 .shbdp-cal-item .shbdp-cal-table-wrapper {
+    width: 100%;
+    padding: 0;
+    float: none;
+    border: none;
+}
+
+body .shbdp-hidden {
+    display: none;
+    width: 700px;
+    max-width: calc(100% - 60px);
+    padding: 20px;
+}
+
+body .shbdp-cal-panels-1.shbdp-hidden {
+    max-width: 350px;
+}
+
+body .shbdp-hidden.shbdp-cal-wrapper .shbdp-cal-prev-btn {
+    top: 15px;
+    left: 20px;
+}
+
+body .shbdp-hidden.shbdp-cal-wrapper .shbdp-cal-next-btn {
+    top: 15px;
+    right: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+
+    body .shbdp-cal-item .shbdp-cal-table-wrapper:first-child,
+    body .shbdp-cal-item .shbdp-cal-table-wrapper:last-child {
+        width: 100%;
+        float: none;
+        padding: 0;
+        border: none;
+    }
+
+    body .shbdp-cal-item .shbdp-cal-table-wrapper:first-child {
+        margin: 0 0 20px 0;
+    }
+
+    body .shb-booking-form-4-wrapper .shbdp-cal-item .shbdp-cal-table-wrapper:first-child {
+        margin: 0;
+    }
+
+}
+
+body .shbdp-noselect.shbdp-cal-wrapper .shbdp-cal-selected-dates,
+body .shbdp-noselect.shbdp-cal-wrapper .shbdp-cal-notice {
+    display: none;
+}
+
+body .shbdp-noselect.shbdp-cal-wrapper table tbody tr td.shbdp-cal-available:hover {
+    background: #424242;
+    color: #fff;
+    cursor: default;
+}
+
+.shbdp-cal-wrapper *,
+.shbdp-cal-wrapper *:before,
+.shbdp-cal-wrapper *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}

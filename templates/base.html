@@ -1,0 +1,1005 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Подключение CSS -->
+    <style type="text/css">
+    img.wp-smiley,
+    img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+    }
+  </style>
+    <link rel='stylesheet' id='wp-block-library-css' href="{% static 'css/wp-block-library.min.css' %}"  media="all"/>
+    <link rel='stylesheet' id='extendify-gutenberg-patterns-and-templates-utilities-inline-css' href="{% static 'css/extendify-gutenberg-patterns-and-templates-utilities.css' %}" media="all"/>
+    {% comment %} <link rel='stylesheet' id='contact-form-7-css' href="{% static 'css/contact-form-7.css' %}" media="all"/> {% endcomment %}
+    <link rel='stylesheet' id='rs-plugin-settings-css' href="{% static 'css/rs6.css' %}" media="all"/>
+    <style id='rs-plugin-settings-inline-css' type='text/css'>
+        #rs-demo-id {}
+    </style>
+    <link rel='stylesheet' id='shb_plugin_css-css' href="{% static 'css/shb_plugin.css' %}" media="all"/>
+    {% comment %} <link rel='stylesheet' id='shb_datepicker-css' href="{% static 'css/shb_datepicker.css' %}" media="all"/> {% endcomment %}
+    <link rel='stylesheet' id='style-css' href="{% static 'css/sohohotel-shortcodes-style.css' %}" media="all"/>
+    <link rel='stylesheet' id='wp-pagenavi-css' href="{% static 'css/wp-pagenavi.css' %}" media="all"/>
+
+    <link rel='stylesheet' id='vc_tta_style-css' href="{% static 'css/js_composer_tta.min.css' %}" media="all"/>
+    <link rel='stylesheet' id='parent-style-css' href="{% static 'css/soho-hotel-style.css' %}" media="all"/>
+    <link rel='stylesheet' id='sohohotel-color-css' href="{% static 'css/sohohotel-color.css' %}" media="all"/>
+    <link rel='stylesheet' id='sohohotel-style-css' href="{% static 'css/style.css' %}" media="all"/>
+    <style id='sohohotel-style-inline-css' type='text/css'>
+        h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .sohohotel-main-content table th,
+    .sohohotel-search-results-wrapper .sohohotel-search-results-list li,
+    .main-content-lightbox table th,
+    .block-link-wrapper-2 .block-link,
+    .block-link-wrapper-3 .block-link,
+    .block-link-wrapper-4 .block-link {
+      font-family: 'Cormorant', serif;
+    }
+
+    body,
+    .sohohotel-main-content input[type="text"],
+    .sohohotel-main-content input[type="password"],
+    .sohohotel-main-content input[type="color"],
+    .sohohotel-main-content input[type="date"],
+    .sohohotel-main-content input[type="datetime-local"],
+    .sohohotel-main-content input[type="email"],
+    .sohohotel-main-content input[type="month"],
+    .sohohotel-main-content input[type="number"],
+    .sohohotel-main-content input[type="range"],
+    .sohohotel-main-content input[type="search"],
+    .sohohotel-main-content input[type="tel"],
+    .sohohotel-main-content input[type="time"],
+    .sohohotel-main-content input[type="url"],
+    .sohohotel-main-content input[type="week"],
+    .sohohotel-main-content textarea,
+    .sohohotel-main-content select,
+    .vc_toggle_size_md.vc_toggle_default .vc_toggle_title h4,
+    .wpb-js-composer .vc_tta.vc_general .vc_tta-panel-title,
+    .external_bookingbutton,
+    .sohohotel-footer-wrapper input[type="submit"],
+    .bookingbutton {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .shb-booking-page-wrapper {
+      padding: 40px 0 80px 0;
+    }
+
+    @media only screen and (max-width: 1020px) {
+      .shb-booking-page-wrapper {
+        padding: 0px 0 80px 0;
+      }
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-logo a {
+      color: #424242;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-navigation li a,
+    body .sohohotel-site-wrapper .sohohotel-navigation li.current_page_item>a,
+    body .sohohotel-site-wrapper .sohohotel-navigation li a:hover,
+    .sohohotel-header-4 .sohohotel-menu-search-link {
+      color: #000000;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-navigation li li.current_page_item>a {
+      color: #777777;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-navigation li li.current_page_item>a:hover {
+      color: #ffffff;
+    }
+
+    body div.sohohotel-site-wrapper .sohohotel-fixed-navigation-show .sohohotel-logo a {
+      color: #424242;
+    }
+
+    body div.sohohotel-site-wrapper div.sohohotel-fixed-navigation-show .sohohotel-navigation>ul>li>a,
+    body div.sohohotel-site-wrapper div.sohohotel-fixed-navigation-show .sohohotel-navigation>ul>li.current_page_item>a,
+    body div.sohohotel-site-wrapper div.sohohotel-fixed-navigation-show .sohohotel-navigation>ul>li>a:hover,
+    body div.sohohotel-site-wrapper div.sohohotel-fixed-navigation-show.sohohotel-header-4 .sohohotel-menu-search-link {
+      color: #000000;
+    }
+
+    body.home .sohohotel-site-wrapper .sohohotel-logo a {
+      color: #424242;
+    }
+
+    body.home .sohohotel-site-wrapper .sohohotel-navigation>ul>li>a,
+    body.home .sohohotel-site-wrapper .sohohotel-navigation>ul>li.current_page_item>a,
+    body.home .sohohotel-site-wrapper .sohohotel-navigation>ul>li>a:hover,
+    body.home .sohohotel-header-4 .sohohotel-menu-search-link {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-logo {
+      margin: 100px 0 0 0;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-logo {
+      width: 250px;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-logo {
+      max-width: 250px;
+    }
+
+    @media only screen and (max-width: 1020px) {
+      body .sohohotel-site-wrapper .sohohotel-logo {
+        margin: 100px 0 0 0;
+      }
+    }
+
+    @media only screen and (max-width: 1020px) {
+      body .sohohotel-site-wrapper .sohohotel-logo {
+        width: 100px;
+      }
+    }
+
+    @media only screen and (max-width: 1020px) {
+      body .sohohotel-site-wrapper .sohohotel-logo {
+        max-width: 100px;
+      }
+    }
+
+    .sohohotel-page-not-found {
+      background-image: url();
+      background-position: top center;
+    }
+
+    body {
+      background-color: #FFFFFF;
+    }
+
+    .sohohotel-page-header {
+      background: #000000;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-page-header h1 {
+      color: #424242;
+    }
+
+    .sohohotel-topbar-wrapper {
+      background: transparent;
+    }
+
+    .sohohotel-topbar-wrapper .sohohotel-top-left-wrapper li,
+    .sohohotel-language-menu p,
+    body .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li a {
+      color: #000000;
+    }
+
+    .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li:after {
+      color: #000000;
+    }
+
+    .sohohotel-fixed-navigation-show .sohohotel-topbar-wrapper {
+      background: #F1F4F2;
+    }
+
+    body div.sohohotel-site-wrapper .sohohotel-fixed-navigation-show .sohohotel-topbar-wrapper .sohohotel-top-left-wrapper li,
+    body div.sohohotel-site-wrapper .sohohotel-fixed-navigation-show .sohohotel-language-menu p,
+    body div.sohohotel-site-wrapper .sohohotel-fixed-navigation-show .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li a,
+    .sohohotel-header-4.sohohotel-fixed-navigation-show .sohohotel-navigation li.current_page_item li>a {
+      color: #000000;
+    }
+
+    body div.sohohotel-site-wrapper .sohohotel-fixed-navigation-show .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li:after {
+      color: #000000;
+    }
+
+    body.home .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-top-left-wrapper li,
+    body.home .sohohotel-site-wrapper .sohohotel-language-menu p,
+    body.home .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li a {
+      color: #000000;
+    }
+
+    body.home .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-language-menu ul li:after {
+      color: #F1F4F2;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button {
+      background: #B99470;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper {
+      background: #1C1C1C;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper,
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper ul li,
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper a,
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper .sohohotel-widget a {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper .sohohotel-footer-bottom-wrapper {
+      background: #B99470;
+    }
+
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper .sohohotel-footer-bottom-wrapper,
+    body .sohohotel-site-wrapper .sohohotel-footer-wrapper .sohohotel-footer-bottom-wrapper a {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .sidebar-booking-form,
+    body .sohohotel-site-wrapper .wide-booking-form,
+    body .sohohotel-site-wrapper .vertical-booking-form,
+    body .sohohotel-site-wrapper .wide-booking-form-2,
+    body .sohohotel-site-wrapper .sh-single-booking-form,
+    body .sohohotel-site-wrapper .room-price-widget .from,
+    body .sohohotel-site-wrapper .room-price-widget .price-detail,
+    body div.shb-booking-form-1,
+    body div.shb-booking-form-2,
+    body div.shb-booking-form-3,
+    body div.shb-booking-form-4,
+    body div.shb-booking-main-wrapper,
+    body div.shb-booking-side-wrapper,
+    body .shb-room p,
+    body div.shb-single-page-booking-form,
+    body .shb-room-price-single .shb-room-price-single-from,
+    body .shb-room-price-single .shb-room-price-single-price-detail {
+      background: #1C1C1C;
+    }
+
+    body .sohohotel-site-wrapper .sidebar-booking-form label,
+    body .sohohotel-site-wrapper .wide-booking-form label,
+    body .sohohotel-site-wrapper .vertical-booking-form label,
+    body .sohohotel-site-wrapper .wide-booking-form-2 label,
+    body .sohohotel-site-wrapper .sh-single-booking-form label,
+    body .sohohotel-site-wrapper .room-price-widget .from,
+    body .sohohotel-site-wrapper .room-price-widget .price-detail {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .room-price-widget {
+      border: #494949 1px solid;
+    }
+
+    body .sohohotel-site-wrapper .sidebar-booking-form .booking-form button,
+    body .sohohotel-site-wrapper .booking-form button,
+    body .sohohotel-site-wrapper .sh-single-booking-form .sh-select-dates {
+      background: #B99470;
+    }
+
+    body .sohohotel-site-wrapper .sidebar-booking-form .booking-form button,
+    body .sohohotel-site-wrapper .booking-form button,
+    body .sohohotel-site-wrapper .sh-single-booking-form .sh-select-dates,
+    body .shb-booking-form-3 button[type="submit"] {
+      color: #FFFFFF;
+    }
+
+    body .sohohotel-site-wrapper .datepicker__inner {
+      background: #1C1C1C;
+    }
+
+    body .sohohotel-site-wrapper .datepicker__month-day,
+    body .sohohotel-site-wrapper .datepicker__month-day--disabled,
+    body .sohohotel-site-wrapper .sohohotel-main-content .datepicker table td {
+      border-right: #1C1C1C 1px solid;
+      border-bottom: #1C1C1C 1px solid;
+    }
+
+    .datepicker__month-name,
+    .datepicker__week-days,
+    .datepicker__month-day,
+    .datepicker__month-day--hovering,
+    .datepicker__close-button,
+    .datepicker__close-button:hover {
+      color: #FFFFFF;
+    }
+
+    .datepicker__month-button--prev:after,
+    .datepicker__month-button--next:after,
+    .datepicker__tooltip {
+      background: #FFFFFF;
+    }
+
+    .datepicker__tooltip:after {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 4px solid #FFFFFF;
+    }
+
+    .datepicker__month-day--invalid {
+      color: #7B7B7B;
+    }
+
+    .datepicker__month-day--disabled {
+      color: #7b7b7b;
+      color: rgba(255, 255, 255, 0);
+      border-right: #1c1c1c 1px solid;
+      border-bottom: #1c1c1c 1px solid;
+    }
+
+    .datepicker__month-day--selected,
+    .datepicker__month-day--first-day-selected,
+    .datepicker__month-day--last-day-selected {
+      color: #FFFFFF;
+    }
+
+    .datepicker__month-day {
+      background: #424242;
+    }
+
+    .datepicker__month-day--hovering {
+      background: #85705C;
+    }
+
+    .datepicker__week-days,
+    .datepicker__month-caption {
+      border-bottom: 1px solid #424242;
+    }
+
+    .datepicker__month-day--invalid {
+      background: #292929;
+    }
+
+    .datepicker__month-day--disabled,
+    .datepicker__month-day--disabled:hover {
+      background: url("{% static 'images/unavailable.png' %}") #292929 center;
+    }
+
+    body .sohohotel-site-wrapper .datepicker__month-day--selected,
+    body .sohohotel-site-wrapper .datepicker__month-day--valid:hover,
+    body .sohohotel-site-wrapper .datepicker__month-day--first-day-selected,
+    body .sohohotel-site-wrapper .datepicker__month-day--last-day-selected {
+      background: #B99470;
+    }
+
+    body .sohohotel-site-wrapper .datepicker__month-day--disabled:hover {
+      background: url("{% static 'images/unavailable.png' %}") #292929 center;
+    }
+
+    body .sohohotel-site-wrapper .datepicker__month-day--last-day-selected {
+      background: #B99470 !important;
+    }
+
+    .sohohotel-header-1 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-phone-icon:before,
+    .sohohotel-header-1 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-map-icon:before,
+    .sohohotel-header-1 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-1 .sohohotel-mobile-navigation-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-1 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-1 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-1 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-1 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-2 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-phone-icon:before,
+    .sohohotel-header-2 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-map-icon:before,
+    .sohohotel-header-2 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-2 .sohohotel-mobile-navigation-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-2 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-2 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-2 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-2 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-3 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-phone-icon:before,
+    .sohohotel-header-3 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-map-icon:before,
+    .sohohotel-header-3 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-3 .sohohotel-mobile-navigation-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-3 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-3 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-3 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-3 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-4 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-4 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-4 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-4 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-5 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-phone-icon:before,
+    .sohohotel-header-5 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-map-icon:before,
+    .sohohotel-header-5 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-5 .sohohotel-mobile-navigation-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-5 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-5 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-5 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-5 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-6 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-phone-icon:before,
+    .sohohotel-header-6 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-left-wrapper li.sohohotel-map-icon:before,
+    .sohohotel-header-6 .sohohotel-topbar-wrapper .sohohotel-topbar .sohohotel-top-right-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-6 .sohohotel-mobile-navigation-wrapper .sohohotel-top-right-button,
+    .sohohotel-header-6 .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-6 .sohohotel-fixed-navigation-show .sohohotel-navigation li ul li a:hover,
+    .sohohotel-header-6 .sohohotel-navigation li ul li.current_page_item a:hover,
+    .sohohotel-header-6 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-page-header h1:after,
+    .sohohotel-main-content table th,
+    .sohohotel-main-content input[type="submit"],
+    .sohohotel-sidebar-content .sohohotel-widget .sohohotel-title-block,
+    .sohohotel-footer-social-icons-wrapper a,
+    .sohohotel-footer-wrapper .sohohotel-footer-bottom-wrapper,
+    .sohohotel-blog-wrapper.sohohotel-blog-wrapper-1-col .sohohotel-blog-block .sohohotel-more-link,
+    .sohohotel-comments-wrapper .sohohotel-comment-count-title:after,
+    .sohohotel-comments-wrapper #respond #reply-title:after,
+    .sohohotel-page-pagination .wp-pagenavi span.current,
+    .sohohotel-page-pagination .wp-pagenavi a:hover,
+    .sohohotel-post-pagination span,
+    .sohohotel-post-pagination span:hover,
+    .sohohotel-page-not-found h1:after,
+    .sohohotel-page-not-found form button,
+    .sohohotel-search-results-wrapper .sohohotel-search-results-form button,
+    .sohohotel-title1 h1:after,
+    .sohohotel-title2 h3:after,
+    .sohohotel-title3 h4:after,
+    .sohohotel-call-to-action-1-section-inner .sohohotel-button0,
+    .sohohotel-call-to-action-2-section h3:after,
+    .sohohotel-call-to-action-2-section .sohohotel-button0,
+    .sohohotel-icon-text-wrapper-1 .sohohotel-icon-text-block .sohohotel-text h4:after,
+    .sohohotel-icon-text-wrapper-2 .sohohotel-icon-text-block h4:after,
+    .sohohotel-about-us-block-wrapper .sohohotel-about-us-block h3:after,
+    .sohohotel-about-us-block-wrapper .sohohotel-about-us-block .sohohotel-about-us-block-button,
+    .sohohotel-about-us-video-wrapper .sohohotel-about-us-block h3:after,
+    .sohohotel-about-us-video-wrapper .sohohotel-about-us-block .sohohotel-about-us-block-button,
+    .vc_toggle_size_md.vc_toggle_default .vc_toggle_title h4:before,
+    .wpb-js-composer .vc_tta-accordion.vc_tta.vc_general .vc_tta-panel h4.vc_tta-panel-title:before,
+    .owl-theme .owl-dots .owl-dot.active span,
+    body .sohohotel-site-wrapper .tnp-widget input[type="submit"].tnp-submit,
+    a.slideshow-button-rooms,
+    a.slideshow-button-testimonials,
+    .sohohotel-header-4 .sohohotel-top-right-button,
+    .sohohotel-header-4 .sohohotel-booking-button,
+    .apply-coupon-button {
+      background: #B99470;
+    }
+
+    .pp_default .pp_close,
+    .pp_hoverContainer .pp_previous,
+    .pp_hoverContainer .pp_next {
+      background-color: #B99470 !important;
+    }
+
+    .sohohotel-header-1 .sohohotel-navigation li.current_page_item a strong,
+    .sohohotel-header-1 .sohohotel-navigation li a:hover strong,
+    .sohohotel-header-1 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-2 .sohohotel-navigation li.current_page_item a,
+    .sohohotel-header-2 .sohohotel-navigation li a:hover,
+    .sohohotel-header-2 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-3 .sohohotel-navigation li.current_page_item a strong,
+    .sohohotel-header-3 .sohohotel-navigation li a:hover strong,
+    .sohohotel-header-3 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-4 .sohohotel-navigation li.current_page_item a,
+    .sohohotel-header-4 .sohohotel-navigation li a:hover,
+    .sohohotel-header-4 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-5 .sohohotel-navigation li.current_page_item a,
+    .sohohotel-header-5 .sohohotel-navigation li a:hover,
+    .sohohotel-header-5 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-header-6 .sohohotel-navigation li.current_page_item a,
+    .sohohotel-header-6 .sohohotel-navigation li a:hover,
+    .sohohotel-header-6 .sohohotel-mobile-navigation-wrapper ul li a:hover,
+    .sohohotel-main-content blockquote,
+    .sohohotel-page-pagination .wp-pagenavi span.current,
+    .sohohotel-page-pagination .wp-pagenavi a:hover,
+    .sohohotel-icon-text-wrapper-1 .sohohotel-icon-text-block .sohohotel-icon,
+    .sohohotel-icon-text-wrapper-2 .sohohotel-icon-text-block .sohohotel-icon {
+      border-color: #B99470;
+    }
+
+    .wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic ul.vc_tta-tabs-list li.vc_tta-tab.vc_active,
+    .wpb-js-composer .vc_tta.vc_general .vc_tta-panel.vc_active .vc_tta-panel-title {
+      border-top: #B99470 4px solid;
+    }
+
+    .sohohotel-main-content blockquote:before,
+    .sohohotel-main-content table td i,
+    .sohohotel-main-content ul li:before,
+    .sohohotel-main-content a,
+    .sohohotel-sidebar-content .sohohotel-widget ul li:before,
+    .sohohotel-footer-wrapper .sohohotel-widget ul li:before,
+    .sohohotel-footer-wrapper .sohohotel-widget .sohohotel-contact-widget .sohohotel-address:before,
+    .sohohotel-footer-wrapper .sohohotel-widget .sohohotel-contact-widget .sohohotel-phone:before,
+    .sohohotel-footer-wrapper .sohohotel-widget .sohohotel-contact-widget .sohohotel-cell-phone:before,
+    .sohohotel-footer-wrapper .sohohotel-widget .sohohotel-contact-widget .sohohotel-email:before,
+    .sohohotel-blog-wrapper.sohohotel-blog-wrapper-1-col .sohohotel-blog-block .sohohotel-blog-meta .sohohotel-blog-meta-author:before,
+    .sohohotel-blog-wrapper.sohohotel-blog-wrapper-1-col .sohohotel-blog-block .sohohotel-blog-meta .sohohotel-blog-meta-date:before,
+    .sohohotel-blog-wrapper.sohohotel-blog-wrapper-1-col .sohohotel-blog-block .sohohotel-blog-meta .sohohotel-blog-meta-category:before,
+    .sohohotel-blog-wrapper.sohohotel-blog-wrapper-1-col .sohohotel-blog-block .sohohotel-blog-meta .sohohotel-blog-meta-comments:before,
+    .sohohotel-blog-wrapper-2-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-date:before,
+    .sohohotel-blog-wrapper-2-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-category:before,
+    .sohohotel-blog-wrapper-3-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-date:before,
+    .sohohotel-blog-wrapper-3-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-category:before,
+    .sohohotel-blog-wrapper-4-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-date:before,
+    .sohohotel-blog-wrapper-4-col .sohohotel-blog-block .sohohotel-blog-block-content .sohohotel-blog-meta .sohohotel-blog-meta-category:before,
+    .sohohotel-main-content .sohohotel-comments-wrapper .sohohotel-comments .sohohotel-comment-text ul li:before,
+    .sohohotel-testimonial-wrapper-1 .sohohotel-testimonial-block div span.sohohotel-open-quote,
+    .sohohotel-testimonial-wrapper-1 .sohohotel-testimonial-block div span.sohohotel-close-quote,
+    .sohohotel-testimonial-wrapper-2 .sohohotel-testimonial-block div span.sohohotel-open-quote,
+    .sohohotel-testimonial-wrapper-2 .sohohotel-testimonial-block div span.sohohotel-close-quote,
+    .sohohotel-blog-carousel-wrapper .sohohotel-blog-block .sohohotel-blog-date:before,
+    .sohohotel-icon-text-wrapper-1 .sohohotel-icon-text-block .sohohotel-icon i,
+    .sohohotel-icon-text-wrapper-2 .sohohotel-icon-text-block .sohohotel-icon i,
+    ul.sohohotel-social-links li i {
+      color: #B99470;
+    }
+
+    .sohohotel-header-1 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-header-2 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-header-3 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-header-4 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-header-5 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-header-6 .sohohotel-topbar-wrapper,
+    .sohohotel-header-6 .sohohotel-navigation,
+    .sohohotel-header-6 .sohohotel-mobile-navigation-wrapper,
+    .sohohotel-footer-wrapper,
+    .sohohotel-search-results-wrapper .sohohotel-search-results-form,
+    .sohohotel-about-us-block-wrapper .sohohotel-about-us-block,
+    .sohohotel-dark-contact-form .wpcf7,
+    .sohohotel-about-us-video-wrapper .sohohotel-about-us-block,
+    .pp_default #pp_full_res .pp_inline p.lightbox-darktext,
+    .pp_default .sohohotel-main-content-lightbox h6,
+    .main-content-stripe-success {
+      background: #1C1C1C;
+    }
+
+    .shb-user-login-reg-wrapper .shb-user-login,
+    .shb-user-login-reg-wrapper .shb-user-reg,
+    .shb-account-wrapper .shb-account-menu,
+    .shb-account-wrapper .shb-account-content,
+    .shb-recent-booking-wrapper .shb-recent-booking h4,
+    .shb-booking-step-wrapper,
+    .shb-booking-side-wrapper,
+    .shb-booking-main-wrapper,
+    .shb-room p,
+    .shb-lightbox-title,
+    .shb-lightbox-content table th,
+    .shb-price-details .shb-deposit-notice,
+    .shb-price-details .shb-total-notice,
+    body .shb-booking-form-1,
+    body .shb-booking-form .shb-guest-selection-dropdown,
+    body .shb-booking-form-2,
+    body .shb-booking-form-3,
+    body .shb-booking-form-4,
+    body .shb-paypal-thanks-page,
+    .shb-single-page-booking-form,
+    .shb-room-price-single .shb-room-price-single-from,
+    .shb-room-price-single .shb-room-price-single-price-detail {
+      background: #1C1C1C;
+    }
+
+    .shb-booking-step-wrapper .shb-step-title:after {
+      border-color: transparent transparent transparent #1C1C1C;
+    }
+
+    body .shb-user-login-reg-wrapper h4:after,
+    h4.shb-title1:after,
+    body a.shb-account-action-btn,
+    .shb-booking-step-wrapper .shb-step-title.shb-step-title-current,
+    .shb-submit-btn-lrg,
+    .shb-booking-rooms .shb-booking-room-wrapper .shb-booking-room-content .shb-booking-room-actions .shb-select-room-button,
+    .shb-edit-room-guest-button,
+    .shb-edit-booking-3-button,
+    .shb-continue-payment-button,
+    .shb-booking-3-pay-button,
+    .shb-apply-coupon-button,
+    body .shb-booking-form-1 button,
+    body .shb-booking-form button,
+    body .shb-booking-form .shb-save-room-selection,
+    body .shb-booking-form-3 button,
+    body .shb-booking-form-4 .shb-select-guests-button,
+    body .shb-booking-form-4 .shb-booking-form-step-2 button,
+    body .shb-paypal-thanks-page i,
+    body .shb-paypal-thanks-page h4:after,
+    .shb-single-page-booking-form button,
+    .sidebar-booking-form button,
+    .accommodation-block-content .price-button,
+    .block-link-wrapper-2 .block-link i,
+    .block-link-wrapper-3 .block-link i,
+    .block-link-wrapper-4 .block-link i,
+    .sohohotel-main-content a.accommodation-block-full-button,
+    .accommodation-block-full-description .title-block-4,
+    .accommodation-video-section .accommodation-block-wrapper .accommodation-info h4 span,
+    .accommodation-grid-wrapper .accommodation-grid .accommodation-block .accommodation-info h4 span,
+    .accommodation-block-wrapper-2 .accommodation-block .accommodation-block-image .accommodation-block-price,
+    .accommodation-block-wrapper-2 .accommodation-block i {
+      background: #B99470;
+    }
+
+    .shb-booking-step-wrapper .shb-step-title.shb-step-title-current:after {
+      border-color: transparent transparent transparent #B99470;
+    }
+
+    .accommodation-block-wrapper-2 .accommodation-block h4 {
+      border-bottom: #B99470 2px solid;
+    }
+
+    body .shb-booking-side-wrapper h4.shb-title1,
+    body .shb-booking-side-wrapper label,
+    body .shb-room p,
+    body .shb-booking-step-wrapper,
+    body .shb-booking-form-1 label,
+    body .shb-booking-form-2 label,
+    body .shb-booking-form-3 label,
+    body .shb-booking-form-4 label,
+    body .shb-booking-form-4 .shb-booking-form-step-2 .shb-change-dates-button {
+      color: #FFFFFF;
+    }
+
+    body .shb-room-price-single {
+      border-color: #494949;
+    }
+
+    body .shb-single-page-booking-form button,
+    body .shb-booking-form button,
+    body .shb-booking-form .shb-save-room-selection,
+    body .shb-booking-form-4 .shb-select-guests-button,
+    body .shb-booking-form-4 .shb-booking-form-step-2 button,
+    body .shb-submit-btn-lrg,
+    .shb-booking-rooms .shb-booking-room-wrapper .shb-booking-room-content .shb-booking-room-actions .shb-select-room-button,
+    .shb-edit-room-guest-button,
+    .shb-edit-booking-3-button,
+    .shb-continue-payment-button,
+    .shb-booking-3-pay-button,
+    .shb-apply-coupon-button {
+      background: #B99470;
+    }
+
+    body .shb-single-page-booking-form button,
+    body .shb-booking-form button,
+    body .shb-booking-form .shb-save-room-selection,
+    body .shb-booking-form-4 .shb-select-guests-button,
+    body .shb-booking-form-4 .shb-booking-form-step-2 button,
+    body .shb-submit-btn-lrg,
+    .shb-booking-rooms .shb-booking-room-wrapper .shb-booking-room-content .shb-booking-room-actions .shb-select-room-button,
+    .shb-edit-room-guest-button,
+    .shb-edit-booking-3-button,
+    .shb-continue-payment-button,
+    .shb-booking-3-pay-button,
+    .shb-apply-coupon-button {
+      color: #FFFFFF;
+    }
+
+    body .shbdp-cal-wrapper {
+      background: #1C1C1C;
+    }
+
+    body .shbdp-cal-item table tbody tr td {
+      border-color: #1C1C1C;
+    }
+
+    body .shbdp-cal-item table tbody tr td {
+      background: #424242;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date-live {
+      background: #85705C;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-enabled:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin {
+      background: #B99470;
+    }
+
+    body .shbdp-cal-item table tbody tr td,
+    body .shbdp-cal-wrapper,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date-live,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-enabled:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout:hover,
+    body .shbdp-cal-selected-dates p,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min.shbdp-cal-selected-date-live:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin:hover,
+    body .shbdp-noselect.shbdp-cal-wrapper table tbody tr td.shbdp-cal-available:hover,
+    body .shbdp-cal-table-wrapper table th,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date {
+      color: #FFFFFF;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled:hover {
+      background: #292929;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disabled:hover {
+      color: #7B7B7B;
+    }
+
+    body .shbdp-cal-item .shbdp-cal-table-wrapper:first-child,
+    body .shbdp-cal-item table thead tr th,
+    .shbdp-cal {
+      border-color: #424242;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-unavailable,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-unavailable:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-checkin-disabled:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-min.shbdp-cal-unavailable.shbdp-cal-enabled:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-disable-max.shbdp-cal-unavailable.shbdp-cal-enabled:hover,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only.shbdp-cal-disable-max,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-available-checkout-only.shbdp-cal-disable-max:hover {
+      background: url("{% static 'images/unavailable.png' %}") no-repeat center #292929;
+      color: rgba(255, 255, 255, 0);
+      cursor: default;
+      -webkit-transition: all 0s ease-in-out;
+      -moz-transition: all 0s ease-in-out;
+      -o-transition: all 0s ease-in-out;
+      -ms-transition: all 0s ease-in-out;
+      transition: all 0s ease-in-out;
+    }
+
+    .sohohotel-header-4.sohohotel-fixed-navigation-show .sohohotel-navigation li li a:hover {
+      color: #fff;
+    }
+
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout:hover {
+      background: #B99470;
+      cursor: pointer;
+    }
+
+    body .shbdp-cal-item table tbody tr td,
+    body .shbdp-cal-wrapper,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date-live,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkout:hover,
+    body .shbdp-cal-selected-dates p,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-checkin body .shbdp-cal-table-wrapper table th,
+    body .shbdp-cal-item table tbody tr td.shbdp-cal-selected-date {
+      color: #FFFFFF;
+    }
+    </style>
+    <link rel='stylesheet' id='sohohotel-fontawesome-css' href="{% static 'css/font-awesome.min.css' %}" media="all"/>
+    <link rel='stylesheet' id='sohohotel-owlcarousel-css' href="{% static 'css/owl.carousel.css' %}" media="all"/>
+    <link rel='stylesheet' id='sohohotel-prettyPhoto-css' href="{% static 'css/prettyPhoto.css.css' %}" media="all"/>
+
+    <link rel='stylesheet' id='sohohotel_fonts-css'
+        href='//fonts.googleapis.com/css?family=Cormorant%3A400%2C400i%2C500%2C500i%7COpen+Sans%3A400%2C400i&#038;ver=1.0.0'
+        media="all" />
+    <link rel='stylesheet' id='newsletter-css' href="{% static 'css/newsletter.css' %}" media="all"/>
+    <link rel='stylesheet' id='js_composer_front-css' href="{% static 'css/js_composer_front.min.css' %}" media="all"/>
+    {% block extra_css %}{% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}" id='jquery-core-js'></script>
+    <script src="{% static 'js/jquery-migrate.min.js' %}" id='jquery-migrate-js'></script>
+    <script src="{% static 'js/rbtools.min.js' %}" id='tp-tools-js'></script>
+    <script src="{% static 'js/rs6.min.js' %}" id='revmin-js'></script>
+    <script src='https://js.stripe.com/v3/?ver=5.6.14' id='shb_stripe-js'></script>
+    <script src="{% static 'js/shb_datepicker.js' %}" id='shb_datepicker-js'></script>
+    <script src="{% static 'js/scripts.js' %}" id='shb_js-js'></script>
+    <script id='shb_js-js-after'>
+        var shb_AJAX_URL = 'https://hotels.podstepki.ru/wp-admin/admin-ajax.php';
+        var shb_error_msg_dates = 'Пожалуйста, выберите дату заезда и выезда';
+        var shb_error_msg_guests = 'Пожалуйста, выберите хотя бы 1 человека';
+        var shb_error_msg_required = 'Пожалуйста, заполните все обязательные поля, отмеченные *';
+        var shb_terms_msg = 'Вы должны принять условия и условия, прежде чем делать заказ';
+        var shbdp_dateformat = 'DD/MM/YYYY';
+        var shbdp_nights = 'Ночи';
+        var shbdp_select_dates = 'Выберите даты, нажав на календарь выше';
+        var shbdp_checkin_not_allowed = 'Допускается бронирование на день';
+        var shbdp_min_max = 'Бронирование на этот период должно быть от%a до%b ночи';
+        var shbdp_min_only = 'Бронирование на этот период ограничено минимумом% за ночь';
+        var shb_terms_set = 'false';
+        var shb_invalid_email_msg = 'Пожалуйста, введите действительный адрес электронной почты';
+        var shb_invalid_phone_msg = 'Номер телефона должен содержать только цифры';
+        var shbdp_max_only = 'Бронирование на этот период ограничено до% b ночей';
+    </script>
+    <script src="{% static 'js/fontawesome-markers.min.js' %}" id='fontawesomemarkers-js'></script>
+    <script src="{% static 'js/vc-accordion.min.js' %}" id='vc_accordion_script-js'></script>
+    <script src="{% static 'js/vc-tta-autoplay.min.js' %}" id='vc_tta_autoplay_script-js'></script>
+    <script src="{% static 'js/vc-tabs.min.js'%}" id='vc_tabs_script-js'></script>
+    <script src="{% static 'js/comment-reply.min.js' %}" id='comment-reply-js'></script>
+    <meta name="generator" content="Site Kit by Google 1.86.0" />
+    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress." />
+    <meta name="generator"
+        content="Powered by Slider Revolution 6.3.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+    <link rel="icon" href="{% static 'images/logo32x32.jpeg' %}" sizes="32x32" />
+    <link rel="icon" href="{% static 'images/logo192x192.jpeg' %}" sizes="192x192" />
+    <link rel="apple-touch-icon" href="{% static 'images/logo180x180.jpeg' %}" />
+    <meta name="msapplication-TileImage"
+        content="{% static 'images/logo270x270.jpeg' %}" />
+    <script type="text/javascript">
+        function setREVStartSize(e) {
+        //window.requestAnimationFrame(function() {				 
+        window.RSIW = window.RSIW === undefined ? window.innerWidth : window.RSIW;
+        window.RSIH = window.RSIH === undefined ? window.innerHeight : window.RSIH;
+        try {
+            var pw = document.getElementById(e.c).parentNode.offsetWidth,
+            newh;
+            pw = pw === 0 || isNaN(pw) ? window.RSIW : pw;
+            e.tabw = e.tabw === undefined ? 0 : parseInt(e.tabw);
+            e.thumbw = e.thumbw === undefined ? 0 : parseInt(e.thumbw);
+            e.tabh = e.tabh === undefined ? 0 : parseInt(e.tabh);
+            e.thumbh = e.thumbh === undefined ? 0 : parseInt(e.thumbh);
+            e.tabhide = e.tabhide === undefined ? 0 : parseInt(e.tabhide);
+            e.thumbhide = e.thumbhide === undefined ? 0 : parseInt(e.thumbhide);
+            e.mh = e.mh === undefined || e.mh == "" || e.mh === "auto" ? 0 : parseInt(e.mh, 0);
+            if (e.layout === "fullscreen" || e.l === "fullscreen")
+            newh = Math.max(e.mh, window.RSIH);
+            else {
+            e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+            for (var i in e.rl)
+                if (e.gw[i] === undefined || e.gw[i] === 0)
+                e.gw[i] = e.gw[i - 1];
+            e.gh = e.el === undefined || e.el === "" || (Array.isArray(e.el) && e.el.length == 0) ? e.gh : e.el;
+            e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+            for (var i in e.rl)
+                if (e.gh[i] === undefined || e.gh[i] === 0)
+                e.gh[i] = e.gh[i - 1];
+
+            var nl = new Array(e.rl.length),
+                ix = 0,
+                sl;
+            e.tabw = e.tabhide >= pw ? 0 : e.tabw;
+            e.thumbw = e.thumbhide >= pw ? 0 : e.thumbw;
+            e.tabh = e.tabhide >= pw ? 0 : e.tabh;
+            e.thumbh = e.thumbhide >= pw ? 0 : e.thumbh;
+            for (var i in e.rl)
+                nl[i] = e.rl[i] < window.RSIW ? 0 : e.rl[i];
+            sl = nl[0];
+            for (var i in nl)
+                if (sl > nl[i] && nl[i] > 0) {
+                sl = nl[i];
+                ix = i;
+                }
+            var m = pw > (e.gw[ix] + e.tabw + e.thumbw) ? 1 : (pw - (e.tabw + e.thumbw)) / (e.gw[ix]);
+            newh = (e.gh[ix] * m) + (e.tabh + e.thumbh);
+            }
+            if (window.rs_init_css === undefined)
+            window.rs_init_css = document.head.appendChild(document.createElement("style"));
+            document.getElementById(e.c).height = newh + "px";
+            window.rs_init_css.innerHTML += "#" + e.c + "_wrapper { height: " + newh + "px }";
+        } catch (e) {
+            console.log("Failure at Presize of Slider:" + e)
+        }
+
+        }
+        //});
+        ;
+    </script>
+    <style type="text/css" id="wp-custom-css">
+        .sohohotel-main-content pre {
+        font-size: 16px;
+        background: white;
+        font-family: Georgia;
+        }
+
+        body .sohohotel-site-wrapper .sohohotel-logo {
+        margin: 0px 0 0 0;
+        max-width: 150px;
+        }
+
+        @media (max-width: 420px) {
+        body .sohohotel-site-wrapper .sohohotel-logo {
+            margin: 50px 0 0 0;
+            max-width: 150px;
+        }
+        }
+
+        .sohohotel-header-2.sohohotel-fixed-navigation-show {
+        background: #f2f4f2
+        }
+
+        .sohohotel-page-header.sohohotel-page-header-2 {
+        background: #caae8d;
+        margin: 0 0 60px 0;
+        padding: 80px 0 50px 0;
+        }
+    </style>
+    <style type="text/css" data-type="vc_shortcodes-custom-css">
+        .vc_custom_1618904862501 {
+        margin-top: 0px !important;
+        margin-right: 0px !important;
+        margin-bottom: 30px !important;
+        margin-left: 0px !important;
+        border-top-width: 0px !important;
+        border-right-width: 0px !important;
+        border-bottom-width: 0px !important;
+        border-left-width: 0px !important;
+        padding-top: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 0px !important;
+        }
+
+        .vc_custom_1538037034701 {
+        margin-bottom: 50px !important;
+        }
+
+        .vc_custom_1538037135512 {
+        margin-bottom: 15px !important;
+        }
+
+        .vc_custom_1538019006226 {
+        margin-top: 40px !important;
+        margin-bottom: 80px !important;
+        }
+
+        .vc_custom_1607010634743 {
+        margin-top: 0px !important;
+        margin-right: 0px !important;
+        margin-bottom: 0px !important;
+        margin-left: 0px !important;
+        border-top-width: 0px !important;
+        border-right-width: 0px !important;
+        border-bottom-width: 0px !important;
+        border-left-width: 0px !important;
+        padding-top: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 0px !important;
+        }
+
+        .vc_custom_1609220285333 {
+        padding-right: 60px !important;
+        padding-left: 60px !important;
+        }
+    </style>
+    <noscript>
+        <style>
+        .wpb_animate_when_almost_visible {
+            opacity: 1;
+        }
+        </style>
+    </noscript>
+</head>
+<body class="home page-template-default page page-id-137 wpb-js-composer js-comp-ver-6.4.2 vc_responsive">
+    <!-- Хедер -->
+    {% include 'header.html' %}
+
+
+        <!-- Основной контент -->
+        {% block content %}{% endblock %}
+
+
+    <!-- Футер -->
+    {% include 'footer.html' %}
+
+    <!-- Подключение JS -->
+    <script type="text/html" id="wpb-modifications"></script>
+    <script src="{% static 'js/wp-polyfill.min.js' %}"></script>
+    <script id='wp-polyfill-js-after'>
+        ('fetch' in window) || document.write('<script src="{% static 'js/wp-polyfill-fetch.min.js' %}"></scr' + 'ipt>');
+        (document.contains) || document.write('<script src="{% static 'js/wp-polyfill-node-contains.min.js' %}"></scr' + 'ipt>');
+        (window.DOMRect) || document.write('<script src="{% static 'js/wp-polyfill-dom-rect.min.js' %}"></scr' + 'ipt>');
+        (window.URL && window.URL.prototype && window.URLSearchParams) || document.write('<script src="{% static 'js/wp-polyfill-url.min.js' %}"></scr' + 'ipt>');
+        (window.FormData && window.FormData.prototype.keys) || document.write('<script src="{% static 'js/wp-polyfill-formdata.min.js' %}"></scr' + 'ipt>');
+        (Element.prototype.matches && Element.prototype.closest) || document.write('<script src="{% static 'js/wp-polyfill-element-closest.min.js' %}"></scr' + 'ipt>');
+    </script>
+    <script type='text/javascript' id='contact-form-7-js-extra'>
+        /* <![CDATA[ */
+        var wpcf7 = {
+        "api": {
+            "root": "https:\/\/hotels.podstepki.ru\/wp-json\/",
+            "namespace": "contact-form-7\/v1"
+        }
+        };
+        /* ]]> */
+    </script>
+    <script src="{% static 'js/core.min.js' %}"></script>
+    <script src="{% static 'js/contact-form-7.js' %}"></script>
+    <script src="{% static 'js/tabs.min.js' %}"></script>
+    <script src="{% static 'js/effect.min.js' %}"></script>
+    <script src="{% static 'js/wp-embed.min.js' %}"></script>
+    <script src="{% static 'js/wpb_composer_front.min.js' %}"></script>
+    <script src="{% static 'js/prettyPhoto.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/sohohotel-scripts.js' %}"></script>
+    <script id='sohohotel-scripts-js-after'>
+        var sohohotel_siteheader = '.sohohotel-header-2';
+    </script>
+    <script src="{% static 'js/datepicker.min.js' %}"></script>
+    <script src="{% static 'js/accordion.min.js' %}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

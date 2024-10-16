@@ -1,0 +1,51 @@
+<!-- BEGIN .shb-booking-form-1 -->
+<div class="shb-booking-form-1 shb-booking-form shb-booking-form-4-cols shb-clearfix">
+
+  <form action="{% url 'booking:create_booking' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" id="room_id" value="{{ room.id }}" />
+    <div class="shbdp-checkin-wrapper">
+      <label id="shbdp-checkin">Заезд</label>
+      <input type="text" name="checkin_display" class="shbdp-checkin-display shbdp-datepicker" placeholder="Заезд" id="shbdp-checkin" value="" />
+    </div>
+    <div class="shbdp-checkout-wrapper">
+      <label id="shbdp-checkout">Выезд</label>
+      <input type="text" name="checkout_display" class="shbdp-checkout-display shbdp-datepicker" placeholder="Выезд" value="" />
+    </div>
+    <input type="hidden" name="shbdp-checkin" class="shbdp-checkin" value="" />
+    <input type="hidden" name="shbdp-checkout" class="shbdp-checkout" value="" />
+    <button type="submit">Проверить наличие свободных мест</button>
+  </form>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() { // Ждём загрузки DOM
+    const room_id = document.getElementById('room_id').value;
+    const checkin = jQuery('.shbdp-checkin-display'); // предполагаем что shb_datepicker инициируется на элементах с этим классом
+    const checkout = jQuery('.shbdp-checkout-display');
+
+    fetch(`/get_booked_dates/${room_id}/`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.booked_dates) {
+          const bookedDates = new Set(data.booked_dates);
+          checkin.datepicker({
+            beforeShowDay: function(date) {
+              const formattedDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+              return [ !bookedDates.has(formattedDate) ]; // true если дата свободна
+            }
+          });
+          checkout.datepicker({
+            beforeShowDay: function(date) {
+              const formattedDate = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+              return [ !bookedDates.has(formattedDate) ]; // true если дата свободна
+            }
+          });
+          } else if (data.error) {
+          console.error("Ошибка:", data.error);
+        }
+      })
+      .catch(error => console.error("Ошибка:", error));
+    });
+</script>

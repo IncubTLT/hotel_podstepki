@@ -1,0 +1,149 @@
+{% load static %}
+<header class="sohohotel-header-2 sohohotel-fixed-navigation">
+    
+  <!-- BEGIN .sohohotel-site-wrapper -->
+  <div class="sohohotel-site-wrapper sohohotel-site-wrapper-boxed">
+
+    <!-- BEGIN .sohohotel-fixed-navigation-wrapper -->
+    <div class="sohohotel-fixed-navigation-wrapper">
+
+      <!-- BEGIN .sohohotel-header-2 -->
+      <div class="sohohotel-header-2 sohohotel-fixed-navigation"
+        style="padding-top: 0px !important; border-top-style: solid !important; border-top-width: 0px !important; margin-top: 0px !important;">
+
+        <!-- BEGIN .sohohotel-topbar-wrapper -->
+        <div class="sohohotel-topbar-wrapper">
+
+          <!-- BEGIN .sohohotel-topbar -->
+          <div class="sohohotel-topbar sohohotel-clearfix">
+
+            <!-- BEGIN .sohohotel-top-left-wrapper -->
+            <ul class="sohohotel-top-left-wrapper sohohotel-clearfix">
+
+              <a href="tel:+79371807626"><li class="sohohotel-phone-icon"> +79371807626</li></a>
+              <li class="sohohotel-map-icon">ул. Трудовая 23Б, Подстёпки, Самарская обл. 445143</li>
+              <!-- END .sohohotel-top-left-wrapper -->
+            </ul>
+
+            <!-- BEGIN .sohohotel-top-right-wrapper -->
+            <div class="sohohotel-top-right-wrapper sohohotel-clearfix">
+
+              <!-- BEGIN .sohohotel-language-menu -->
+              <div class="sohohotel-language-menu sohohotel-clearfix">
+
+                <p>
+                  <span></span>
+                </p>
+
+                <!-- END .sohohotel-language-menu -->
+              </div>
+
+              <!-- END .sohohotel-top-right-wrapper -->
+            </div>
+
+            <!-- END .sohohotel-topbar -->
+          </div>
+
+          <!-- END .sohohotel-topbar-wrapper -->
+        </div>
+
+        <!-- BEGIN .sohohotel-logo-navigation-wrapper -->
+        <div class="sohohotel-logo-navigation-wrapper">
+
+          <!-- BEGIN .sohohotel-logo-navigation -->
+          <div class="sohohotel-logo-navigation sohohotel-clearfix"
+            style="height: 0px !important; padding-top: 0px !important; height: 0px !important; padding-top: 0px !important;">
+            <a href="/" title="Загородная гостиница в Подстепках">
+              <img class="sohohotel-logo" src="{% static 'images/logo.png' %}"
+                alt="Villa23" />
+            </a>
+
+            <!-- BEGIN .sohohotel-navigation -->
+            <div class="sohohotel-navigation">
+
+              <ul>
+                <li id="menu-item-938" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-938">
+                  <a href="/">Главная</a>
+                </li>
+                <li id="menu-item-1140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1140">
+                  <a
+                    href="{% url 'index:hotel' %}">Гостиница</a>
+                </li>
+                <li id="menu-item-481" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-481">
+                  <a
+                    href="{% url 'index:pool' %}">Бассейн</a>
+                </li>
+                <li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1222">
+                  <a href="{% url 'index:batherouse' %}">Русская баня</a>
+                </li>
+                <li id="menu-item-486" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-486">
+                  <a href="{% url 'index:event' %}">Event day</a>
+                </li>
+                <li id="menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-991">
+                  <a
+                    href="{% url 'index:territory' %}">Территория</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li id="menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-991">
+                  <a
+                    href="{% url 'logout' %}">Выйти</a>
+                </li>
+                {% else %}
+                <li id="menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-991">
+                  <a
+                    href="{% url 'users:register' %}">Регистрация</a>
+                </li>
+                <li id="menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-991">
+                  <a
+                    href="{% url 'login' %}">Войти</a>
+                </li>
+                {% endif %}
+              </ul>
+              <!-- END .sohohotel-navigation -->
+            </div>
+
+            <a href="#" class="sohohotel-mobile-navigation-button">
+              <i class="fa fa-bars"></i>
+            </a>
+
+            <!-- BEGIN .sohohotel-logo-navigation -->
+          </div>
+
+          <!-- BEGIN .sohohotel-logo-navigation-wrapper -->
+        </div>
+
+        <!-- BEGIN .sohohotel-mobile-navigation-wrapper -->
+        <div class="sohohotel-mobile-navigation-wrapper clearfix"
+          style="padding-left: 0px !important; display: none; left: 0px !important; margin-left: 150px !important; margin-top: 150px;">
+
+          <div class="sohohotel-clearboth"></div>
+
+          <ul class="sohohotel-mobile-navigation">
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-938">
+              <a href="/">Главная</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1140">
+              <a href="{% url 'index:hotel' %}">Гостиница</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-481">
+              <a href="{% url 'index:pool' %}">Бассейн</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1222">
+              <a href="{% url 'index:batherouse' %}">Русская баня</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-486">
+              <a href="{% url 'index:event' %}">Event day</a>
+            </li>
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-991">
+              <a href="{% url 'index:territory' %}">Территория</a>
+            </li>
+          </ul>
+          <!-- END .sohohotel-mobile-navigation-wrapper -->
+        </div>
+
+        <!-- END .sohohotel-header-2 -->
+      </div>
+
+      <!-- END .sohohotel-fixed-navigation-wrapper -->
+    </div>
+</header>

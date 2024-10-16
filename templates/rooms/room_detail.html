@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+{% block title %}Номер Люкс{% endblock %}
+{% load static %}
+{% block content %}
+        <!-- BEGIN .sohohotel-page-header -->
+        <div class="sohohotel-page-header sohohotel-page-header-2">
+
+            <h1>Номер «{{ room.title }}»</h1>
+
+            <!-- END .sohohotel-page-header -->
+        </div>
+
+        <!-- BEGIN .sohohotel-content-wrapper -->
+        <div class="sohohotel-content-wrapper sohohotel-clearfix sohohotel-content-wrapper-right-sidebar">
+
+            <!-- BEGIN .sohohotel-main-content -->
+            <div class="sohohotel-main-content sohohotel-main-content-right-sidebar">
+
+                <div class="sohohotel-title3 sohohotel-title-color">
+                    <h4>Характеристики номера</h4>
+                </div>
+                <div class="wpb_text_column wpb_content_element ">
+                    <div class="wpb_wrapper">
+                        {% for detail in details %}
+                        <p>{{ detail.detail }}</p>
+
+                    </div>
+                </div>
+                <div class="vc_tta-container" data-vc-action="collapse">
+                    <div class="vc_general vc_tta vc_tta-tabs vc_tta-color-grey vc_tta-style-classic vc_tta-shape-rounded vc_tta-spacing-1 vc_tta-tabs-position-top vc_tta-controls-align-left">
+                        <div class="vc_tta-tabs-container">
+                            <ul class="vc_tta-tabs-list">
+                                <li class="vc_tta-tab vc_active" data-vc-tab>
+                                    <a href="#1537784805224-44b90db2-280a" data-vc-tabs data-vc-container=".vc_tta">
+                                        <span class="vc_tta-title-text">Опции номера</span>
+                                    </a>
+                                </li>
+                                <li class="vc_tta-tab" data-vc-tab>
+                                    <a href="#1537784805248-5523af46-f2d8" data-vc-tabs data-vc-container=".vc_tta">
+                                        <span class="vc_tta-title-text">Услуги комплекса</span>
+                                    </a>
+                                </li>
+                                <li class="vc_tta-tab" data-vc-tab>
+                                    <a href="#1537784808237-4420b1fb-8092" data-vc-tabs data-vc-container=".vc_tta">
+                                        <span class="vc_tta-title-text">Дополнительные услуги «Villa23»</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="vc_tta-panels-container">
+                            <div class="vc_tta-panels">
+                                <div class="vc_tta-panel vc_active" id="1537784805224-44b90db2-280a" data-vc-content=".vc_tta-panel-body">
+                                    <div class="vc_tta-panel-heading">
+                                        <h4 class="vc_tta-panel-title">
+                                            <a href="#1537784805224-44b90db2-280a" data-vc-accordion data-vc-container=".vc_tta-container">
+                                                <span class="vc_tta-title-text">Опции номера</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="vc_tta-panel-body">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <table style="height: 163px;" width="686">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-title="Column 1">
+                                                                <i class="fa fa-plane"></i>
+                                                                Размер номера {{ detail.size }}
+                                                            </td>
+                                                            {% endfor %}
+                                                            <td data-title="Column 1">
+                                                                <i class="fa fa-bars"></i>
+                                                                Балкон
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-title="Column 2">
+                                                                <i class="fa fa-snowflake-o"></i>
+                                                                Кондиционер
+                                                            </td>
+                                                            <td data-title="Column 2">
+                                                                <i class="fa fa-cutlery"></i>
+                                                                Микроволновая печь
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-title="Column 4">
+                                                                <i class="fa fa-coffee"></i>
+                                                                Мини-кухня
+                                                            </td>
+                                                            <td data-title="Column 3">
+                                                                <i class="fa fa-thermometer-three-quarters"></i>
+                                                                Холодильник
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-title="Column 5">
+                                                                <i class="fa fa-tv"></i>
+                                                                Телевизор
+                                                            </td>
+                                                            <td data-title="Column 5">
+                                                                <i class="fa fa-ship"></i>
+                                                                Электрический чайник
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-title="Column 6">
+                                                                <i class="fa fa-bath"></i>
+                                                                Ванные комнаты: 2
+                                                            </td>
+                                                            <td data-title="Column 6">
+                                                                <i class="fa fa-wifi"></i>
+                                                                Бесплатный Wi-Fi!
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="accommodation-block-content">
+                                                <div class="shb-clearfix">
+                                                <a style="margin-top: 5px !important" href="{% url 'booking:create_booking' room_id=room.id %}"
+                                                    class="price-button">
+                                                        Забронировать этот номер
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="vc_tta-panel" id="1537784805248-5523af46-f2d8" data-vc-content=".vc_tta-panel-body">
+                                    <div class="vc_tta-panel-heading">
+                                        <h4 class="vc_tta-panel-title">
+                                            <a href="#1537784805248-5523af46-f2d8" data-vc-accordion data-vc-container=".vc_tta-container">
+                                                <span class="vc_tta-title-text">Услуги комплекса</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="vc_tta-panel-body">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <p>
+                                                    <strong>Гостиничный комплекс обеспечивает проживающим следующие виды бесплатных услуг:</strong>
+                                                    <br/>
+
+                                                    вызов «скорой помощи»;
+                                                    <br/>
+
+                                                    Вызов такси;
+                                                    <br/>
+
+                                                    Пользование утюгом и гладильной доской в специальном помещении;
+                                                    <br/>
+
+                                                    Услуги беспроводного интернета Wi-Fi в общественных зонах;
+                                                    <br/>
+
+                                                    Пользование электробытовыми приборами, установленными в номере (телевизор, фен, кондиционер, холодильник);
+                                                    <br/>
+
+                                                    Предоставление детской кроватки;
+                                                    <br/>
+
+                                                    Бизнес-услуги (сканирование, ксерокопия, отправка email);
+                                                    <br/>
+
+                                                    Мангальная зона (в порядке очереди, если такая имеется);
+                                                    <br/>
+
+                                                    Предоставление доп. комплекта посуды (однократно за заезд);
+                                                    <br/>
+
+                                                    Пользование бассейном.
+                                                </p>
+                                                <div class="accommodation-block-content">
+                                                <div class="shb-clearfix">
+                                                <a style="margin-top: 5px !important" href="{% url 'booking:create_booking' room_id=room.id %}"
+                                                    class="price-button">
+                                                        Забронировать этот номер
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="vc_tta-panel" id="1537784808237-4420b1fb-8092" data-vc-content=".vc_tta-panel-body">
+                                    <div class="vc_tta-panel-heading">
+                                        <h4 class="vc_tta-panel-title">
+                                            <a href="#1537784808237-4420b1fb-8092" data-vc-accordion data-vc-container=".vc_tta-container">
+                                                <span class="vc_tta-title-text">Дополнительные услуги «Villa23»</span>
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="vc_tta-panel-body">
+                                        <div class="wpb_text_column wpb_content_element ">
+                                            <div class="wpb_wrapper">
+                                                <p>
+                                                    <strong>
+                                                        Перечень и стоимость платных
+                                                        <span class="Apple-converted-space"></span>
+                                                        услуг для гостей отеля
+                                                    </strong>
+                                                </p>
+                                                <table cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top">Завтрак (яичница, сосиски, круассан, кофе/чай) ежедневно с 7:30 до 10:00</td>
+                                                            <td valign="top">200 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Охраняемая парковка. Круглосуточно</td>
+                                                            <td valign="top">100 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Одноразовые тапочки ежедневно с 9:00 до 22:00</td>
+                                                            <td valign="top">100 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="&quot;top»">Полотенце ежедневно с 9:00 до 22:00</td>
+                                                            <td valign="top">100 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Услуги прачечной ежедневно с 9:00 до 22:00</td>
+                                                            <td valign="top">300 руб. до 7 кг. сухого белья</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Русская баня на дровах (свыше трёх часов) ежедневно с 9:00 до 24:00</td>
+                                                            <td valign="top">1500 руб./час</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Уголь 3кг ежедневно с 9:00 до 22:00</td>
+                                                            <td valign="top">200 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Шампура 5 шт. ежедневно с 9:00 до 22:00</td>
+                                                            <td valign="top">100 руб.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">Дополнительные гости с 22 8:00</td>
+                                                            <td valign="top">1000 руб. за каждого</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="accommodation-block-content">
+                                                <div class="shb-clearfix">
+                                                <a style="margin-top: 5px !important" href="{% url 'booking:create_booking' room_id=room.id %}"
+                                                    class="price-button">
+                                                        Забронировать этот номер
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vc_empty_space" style="height: 15px">
+                    <span class="vc_empty_space_inner"></span>
+                </div>
+                <div class="vc_row wpb_row vc_row-fluid">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="sohohotel-title3 sohohotel-title-color">
+                                    <h4>Фотографии номера</h4>
+                                </div>
+                                <div class="wpb_text_column wpb_content_element ">
+                                    <div class="wpb_wrapper">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id='gallery-1' class='gallery galleryid-939 gallery-columns-2 gallery-size-thumbnail'>
+                    {% for image in images %}
+                    <div class='gallery-item'>
+                        <div class='gallery-icon'>
+                            <a href="{{ image.image.url }}" data-gal="prettyPhoto[gallery-1]" title="{{ image.caption }}">
+                                <img src="{{ image.image.url }}" alt="{{ image.caption }}"/>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <br style='clear: both;'/>
+                </div>
+
+                <p>&nbsp;</p>
+                <div class="vc_toggle vc_toggle_default vc_toggle_color_default  vc_toggle_size_md">
+                    <div class="vc_toggle_title">
+                        <h4>Правила проживания в гостинице</h4>
+                        <i class="vc_toggle_icon"></i>
+                    </div>
+                    <div class="vc_toggle_content">
+                        <ol>
+                            <li>Отель предназначен для временного проживания гостей на срок, согласованный с администрацией отеля. По истечении согласованного срока, гость обязан освободить номер по требованию администрации. При желании продлить срок проживания необходимо сообщить об этом администратору отеля не позднее, чем за 2 часа до расчетного часа — 12 часов по местному времени. Продление срока проживания в этом же номере возможно только при отсутствии на него подтвержденной брони в пользу третьих лиц.</li>
+                            <li>Расчетный час — 12:00 часов по местному времени. Заселение гостей с 14:00 часов по местному времени.</li>
+                            <li>Плата за проживание и услуги в отеле осуществляется по свободным (договорным) ценам, согласно утвержденному руководством отеля прейскуранту.</li>
+                        </ol>
+                        <p>В случае проживания более суток, расчет происходит по следующему принципу:</p>
+                        <p>3.1 Ранний заезд: 300 руб/час, при наличии свободных мест;</p>
+                        <p>3.2 Поздний выезд: 300 руб/час, после 18:00 – доплата 100% от стоимости номера.</p>
+                        <p>За проживание детей в возрасте до 5 лет без предоставления отдельного места оплата не взимается.</p>
+                        <ol start="4">
+                            <li>В случае отказа гостя от проживания или сокращения срока проживания, администрация вправе удержать внесенную гостем (его гарант) предоплату.</li>
+                            <li>По просьбе проживающих, с согласия администрации, допускается нахождение посторонних лиц в номере с 08:00 до 22:00 часов; для этого посетителю необходимо по запросу предоставить администратору удостоверение личности гостя.</li>
+                        </ol>
+                        <p>В случае задержки посетителя в номере гостя после 22:00 или провода в отель зарегистрированным гостем постороннего лица в ночное время (с 22:00 до 08:00 часов), данные лица должны быть оформлены на подселение в номер гостя. За такое подселение взимается оплата согласно утвержденного в отеле прейскуранта.</p>
+                        <ol start="6">
+                            <li>Смена постельного белья производится один раз в три дня, полотенец и туалетных принадлежностей производится по требованию.</li>
+                            <li>Отель не несет ответственности за работу служб предоставляющих энергию и водоснабжение (аварийное отключение электрической и тепловой энергии, водоснабжения).</li>
+                        </ol>
+                        <ol start="8">
+                            <li>Проживающий обязан:</li>
+                        </ol>
+                        <p>8.1 При выходе из номера закрыть водоразборные краны, окна;</p>
+                        <p>8.2 Соблюдать чистоту, тишину и общественный порядок в номере и отеле. Особенно просим            соблюдать тишину после 23:00.</p>
+                        <p>8.3 Строго соблюдать правила пожарной безопасности;</p>
+                        <p>8.4 Возместить ущерб в случае утраты, повреждения или порчи имущества отеля. Оценка нанесенного ущерба производится на основании «прейскуранта цен на порчу гостиничного имущества»;</p>
+                        <p>8.5 Нести ответственность за действия приглашенных им к себе в номер посетителей;</p>
+                        <p>8.6 Своевременно и в полном объеме оплачивать все предоставленные отелем дополнительные услуги.</p>
+                        <ol start="10">
+                            <li>
+                                <span class="Apple-converted-space"></span>
+                                В отеле запрещается:
+                            </li>
+                        </ol>
+                        <p>10.1 Оставлять в номере посторонних лиц, а также передавать им ключ от номера;</p>
+                        <p>10.2 Хранить громоздкие вещи, легковоспламеняющиеся материалы, оружие, химические и радиоактивные вещества, ртуть;</p>
+                        <p>10.3 Держать в номере животных;</p>
+                        <p>10.4 Курить в номерах;</p>
+                        <p>10.5 Находиться в состоянии алкогольного или наркотического опьянения;</p>
+                        <p>10.6 Нарушать покой гостей, проживающих в соседних номерах.</p>
+                        <ol start="11">
+                            <li>Администрация не несет ответственности за утрату ценных вещей гостя, находящихся в номере, при нарушении им порядка проживания в отеле. В случае обнаружения забытых вещей, администрация принимает меры к возврату их владельцам. Если владелец не найден, администрация заявляет о находке в полицию или орган местного самоуправления.</li>
+                            <li>Администрация отеля оставляет за собой право посещения номера без согласования с гостем в случае задымления, пожара, затопления, а также в случае нарушения гостем настоящего порядка проживания, общественного порядка, порядка пользования бытовыми приборами.</li>
+                            <li>Отель вправе расторгнуть договор на оказание гостиничных услуг в одностороннем порядке, либо отказать в продлении срока проживания, в случае нарушения гостем порядка проживания, несвоевременной оплаты услуг отеля, причинения гостем материального ущерба отелю.</li>
+                            <li>В случае возникновения жалоб со стороны потребителя, администрация принимает все возможные меры для урегулирования конфликта, предусмотренные законодательством.</li>
+                        </ol>
+                        <p>В случаях, не предусмотренных настоящими правилами, администрация и потребитель руководствуются действующим законодательством РФ.</p>
+                    </div>
+                </div>
+
+                <!-- END .sohohotel-main-content -->
+            </div>
+
+            <!-- END .sohohotel-content-wrapper -->
+        </div>
+{% endblock %}
+Ознакомься со стилями и информацией которая тут представлена и напиши модель Django для этого шаблона, чтобы информация и картинки рендерились из модели для этого шаблона, а также напиши вьюху и шаблон адаптированный под неё, а не вот эти вот все повторяющиеся коды
