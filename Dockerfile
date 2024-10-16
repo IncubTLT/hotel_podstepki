@@ -4,22 +4,18 @@ FROM python:3.10.14-slim-bullseye
 WORKDIR /app
 
 # Установка системных зависимостей
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    sudo \
-    supervisor && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && apt-get clean
 
-# Установка переменных среды
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    DJANGO_SECRET_KEY=DJANGO_SECRET_KEY
+# Установка зависимостей Python
+COPY requirements.txt .
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install -r requirements.txt
 
 # Установка Gunicorn и Psycopg
-RUN pip install --upgrade pip && \
-    pip install gunicorn==20.1.0 && \
-    pip install psycopg2-binary==2.8.6
+RUN pip install gunicorn==20.1.0 && \
+    pip install psycopg2-binary==2.9.3
 
 # Копирование и установка зависимостей Python
 COPY requirements.txt .
