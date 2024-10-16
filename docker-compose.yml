@@ -12,9 +12,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - pg_logs:/var/log/postgresql
     environment:
-      POSTGRES_DB: dbname
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   hotel:
     image: incubtlt/hotel:latest
