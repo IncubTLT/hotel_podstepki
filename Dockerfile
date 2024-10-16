@@ -4,10 +4,10 @@ FROM python:3.10.14-slim-bullseye
 WORKDIR /app
 
 # Установка системных зависимостей
-RUN apt-get update && apt-get install -y \
-    supervisor && \
-    libpq-dev \
-    && apt-get clean && \
+RUN apt-get update && \
+    apt-get install -y supervisor libpq-dev && \
+    apt-get autoremove -y && \
+    apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Установка зависимостей Python
