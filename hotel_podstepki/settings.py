@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
-from pathlib import Path
+from pathlib import Path, PurePath
 
 from dotenv import load_dotenv
 
@@ -139,9 +139,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
-if not DEBUG:
-    STATIC_ROOT = BASE_DIR / 'static'
+if DEBUG:
+    STATICFILES_DIRS = (os.fspath(PurePath(BASE_DIR, 'static')),)
+else:
+    STATIC_ROOT = os.fspath(PurePath(BASE_DIR, 'static'))
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
