@@ -16,7 +16,7 @@ ENV PYTHONUNBUFFERED=1 \
 WORKDIR /app
 
 # Копирование проекта
-COPY . .
+COPY . /app
 RUN pip install --upgrade pip setuptools wheel && \
     pip install -r requirements.txt
 
