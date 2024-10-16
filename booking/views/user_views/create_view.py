@@ -1,6 +1,5 @@
 import datetime
 import json
-import os
 
 from django.contrib import messages
 from django.core.serializers.json import DjangoJSONEncoder
@@ -36,6 +35,7 @@ STEP_NAMES_TRANSLATION = {
 
 
 class BookingCreateWizardView(SessionWizardView):
+
     """
     Окно мастера для создания новых бронирований,
     управления многоэтапной отправкой форм.
@@ -45,8 +45,10 @@ class BookingCreateWizardView(SessionWizardView):
     form_list = BOOKING_STEP_FORMS
 
     def dispatch(self, request, *args, **kwargs):
+
         """
-        Перехватывает запрос и сохраняет room_id в сессии для последующего использования.
+        Перехватывает запрос и сохраняет room_id в
+        сессии для последующего использования.
         """
         # Получаем room_id из URL и сохраняем его в сессии
         room_id = kwargs.get('room_id')
@@ -56,6 +58,7 @@ class BookingCreateWizardView(SessionWizardView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, form, **kwargs):
+
         """
         Расширяет контекст шаблона, добавляя дополнительные данные,
         связанные с бронированием.
@@ -119,6 +122,7 @@ class BookingCreateWizardView(SessionWizardView):
         return context
 
     def get_booking_settings(self):
+
         """
         Кэширует и возвращает первый экземпляр BookingSettings,
         чтобы свести к минимуму запросы к базе данных.

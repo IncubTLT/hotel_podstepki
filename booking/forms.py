@@ -48,7 +48,7 @@ class BookingSettingsForm(ChangeInputsStyle, forms.ModelForm):
     def clean_max_booking_per_time(self):
         if self.cleaned_data["max_booking_per_time"] < 1:
             raise forms.ValidationError(
-                    "Должно быть хотя бы 1 бронирование!")
+                "Должно быть хотя бы 1 бронирование!")
         return self.cleaned_data["max_booking_per_time"]
 
     def clean_end_time(self):

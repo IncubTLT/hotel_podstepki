@@ -5,6 +5,7 @@ from django.utils.decorators import method_decorator
 
 
 class BookingSettingMixin(object):
+
     """
     View mixin which requires that the authenticated user is a staff member
     (i.e. `is_staff` is True).

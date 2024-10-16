@@ -1,0 +1,57 @@
+volumes:
+  postgres_data:
+  pg_logs:
+  static:
+  media:
+
+  
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - pg_logs:/var/log/postgresql
+    environment:
+      POSTGRES_DB: dbname
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  hotel:
+    image: incubtlt/hotel:latest
+    platform: linux/amd64
+    env_file: .env
+    volumes:
+      - .:/app
+      - static:/app/static/
+      - media:/app/media/
+      - ./logs:/app/logs
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nginx:
+    image: incubtlt/hotel-nginx:latest
+    container_name: nginx
+    depends_on:
+      - hotel
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    volumes:
+      - static:/app/static/
+      - media:/app/media/
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - ./certbot/www/:/var/lib/letsencrypt/
+    ports:
+      - '80:80'
+      - '443:443'
+
+  certbot:
+    image: certbot/hotel-certbot:latest
+    container_name: certbot
+    restart: unless-stopped
+    volumes:
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - ./certbot/www/:/var/lib/letsencrypt/
+    entrypoint: '/bin/sh -c "trap exit TERM; while :; do certbot renew -v; sleep 48h & wait $${!}; done;"'
+    depends_on:
+      - nginx

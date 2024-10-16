@@ -1,10 +1,5 @@
-from datetime import timedelta
-
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
-
-from booking.models import Booking
 
 from .models import Room
 

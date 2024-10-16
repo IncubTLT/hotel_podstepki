@@ -1,9 +1,9 @@
-
-from booking.models import Booking
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import View
+
+from booking.models import Booking
 from booking.utils import BookingSettingMixin
-from django.shortcuts import get_object_or_404, redirect           
 
 
 class BookingApproveView(BookingSettingMixin, View):

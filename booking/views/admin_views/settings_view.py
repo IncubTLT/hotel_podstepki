@@ -1,10 +1,10 @@
 
-from booking.models import BookingSettings
-from django.urls import reverse_lazy
+from django.shortcuts import reverse
 from django.views.generic import UpdateView
-from booking.utils import BookingSettingMixin
-from django.shortcuts import  reverse           
+
 from booking.forms import BookingSettingsForm
+from booking.models import BookingSettings
+from booking.utils import BookingSettingMixin
 
 
 class BookingSettingsView(BookingSettingMixin, UpdateView):

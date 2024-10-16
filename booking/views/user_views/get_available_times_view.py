@@ -4,6 +4,7 @@ from booking.models import Booking, BookingSettings
 
 
 def add_delta(time: datetime.time, delta: datetime.timedelta) -> datetime.time:
+
     """
     Adds a time delta to a datetime.time object and returns the updated time.
 
