@@ -5,8 +5,10 @@ WORKDIR /app
 
 # Установка системных зависимостей
 RUN apt-get update && apt-get install -y \
+    supervisor && \
     libpq-dev \
-    && apt-get clean
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Установка зависимостей Python
 COPY requirements.txt .
