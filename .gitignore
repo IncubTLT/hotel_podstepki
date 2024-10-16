@@ -1,0 +1,71 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Логи
+*.log
+
+# Временные файлы
+*.tmp
+*.temp
+*.bak
+
+# Директории сборки
+build/
+dist/
+out/
+
+# Зависимости
+node_modules/
+vendor/
+
+# Файлы окружения
+.env
+.env.local
+.env.*.local
+
+# Кэш и другие временные файлы
+.cache/
+*.cache
+*.swp
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Java
+*.class
+*.jar
+
+# Ruby
+*.gem
+*.rbc
+
+# C/C++
+*.o
+*.exe
+*.out
+*.class
+
+# Компиляция LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# Docker
+*.dockerignore
+.docker/

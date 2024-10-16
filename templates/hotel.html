@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}Гостиница{% endblock %}
+{% load static %}
+{% block content %}
+<!-- BEGIN .sohohotel-page-header -->
+    <div class="sohohotel-page-header sohohotel-page-header-2">
+
+      <h1>Гостиница в Тольятти</h1>
+
+      <!-- END .sohohotel-page-header -->
+    </div>
+
+    <!-- BEGIN .sohohotel-content-wrapper -->
+    <div class="sohohotel-content-wrapper sohohotel-clearfix sohohotel-content-wrapper-right-sidebar">
+
+      <!-- BEGIN .sohohotel-main-content -->
+      <div class="sohohotel-main-content sohohotel-main-content-right-sidebar">
+
+        <div class="vc_row wpb_row vc_row-fluid">
+          <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+              <div class="wpb_wrapper">
+
+                <!-- BEGIN .accommodation-block-wrapper-2 -->
+                <div class="accommodation-block-wrapper-2 accommodation-3-cols clearfix">
+
+                  <!-- BEGIN .accommodation-block -->
+                  {% for room in rooms %}
+                  <div class="accommodation-block clearfix">
+
+                    <div class="accommodation-block-image">
+                      <a href="{{ room.get_absolute_url }}"
+                        rel="bookmark" title="Номер «Люкс»">
+                        <img src="{{ room.image.url }}"
+                          alt="Номер «{{ room.title }}»" />
+                      </a>
+                      <div class="accommodation-block-price">
+                        <a
+                          href="{{ room.get_absolute_url }}">От
+                          {{ room.price }}₽</a>
+                      </div>
+                    </div>
+
+                    <h4 class="shb-clearfix">
+                      <a href="{{ room.get_absolute_url }}"
+                        rel="bookmark" title="Номер «{{ room.title }}»">
+                        <span>Номер «{{ room.title }}»</span>
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </h4>
+
+                    <!-- END .accommodation-block -->
+                  </div>
+                  {% endfor %}
+                  <!-- END .accommodation-grid -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- END .sohohotel-main-content -->
+      </div>
+
+        <div id="rev-slider-widget-2"
+          class="sohohotel-widget sohohotel-widget-wrapper sohohotel-clearfix widget_revslider">
+          <div class="sohohotel-title-block"></div>
+        </div>
+        <!-- END .sohohotel-sidebar-content -->
+      </div>
+
+      <!-- END .sohohotel-content-wrapper -->
+    </div>
+{% endblock %}

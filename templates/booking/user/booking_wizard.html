@@ -1,0 +1,136 @@
+{% extends 'booking/user/base.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/flatpickr.min.css' %}">
+{% endblock extra_css %}
+
+{% block side_text %}
+    <div class="booking-cta">
+        <h1>{{title}}</h1>
+        <p>{{description}}</p>
+    </div>
+{% endblock side_text %}
+
+{% block steps %}
+{% include 'booking/admin/components/show_errors.html' %}
+{% if messages %}
+    <div id="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<input type="hidden" id="available_booking_months" value="{{booking_settings.available_booking_months}}" />
+<input type="hidden" id="disable_weekend" value="{{booking_settings.disable_weekend}}" />
+
+<!-- steps START -->
+<div class="tab-pane fade show active" id="pills-date" role="tabpanel" aria-labelledby="pills-date-tab">
+    <h1 class="text-muted h2">{{step_name}}</h1>
+    <p class="text-muted">Пожалуйста заполните поля ниже:</p>
+    <hr>
+    {{ wizard.management_form }}
+    <div class="row">
+        {% for field in wizard.form %}
+            <div class="col-md-6 mb-3">
+                <div class="form-floating {% if field.is_hidden %}d-none{% endif %}">
+                    {{ field }}
+                    <label for="{{field.id_for_label}}">{{ field.label }}</label>
+                </div>
+            </div>
+            {% if wizard.steps.current == "Time" %}
+                <!-- Time List START -->
+
+                <div id="time-list" class="container row g-2">
+                    {% for item in get_available_time %}
+                        <p class="border mx-1 col-2 py-3 text-center bg-{% if item.is_taken %}secondary {% elif item.time == field.value %}primary text-white {% else%}light {% endif %}">{{item.time}}</p>
+                    {% endfor %}
+                </div>
+
+                <!-- Time List End -->
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<!-- steps END -->
+
+</div>
+
+
+{% endblock steps %}
+
+{% block extra_script %}
+<script src="{% static 'js/flatpickr.js' %}"></script>
+
+<script>
+
+    // Начало функции Time
+    document.querySelectorAll("#time-list .bg-light, #time-list .bg-primary").forEach(timeBtn => {
+        timeBtn.addEventListener("click", timeBtnClicked.bind(this, timeBtn))
+    })
+
+    function timeBtnClicked(item) {
+        document.querySelectorAll("#time-list .bg-primary").forEach(item => {
+            item.classList.remove("bg-primary", "text-white")
+            item.classList.add("bg-light")
+        })
+        item.classList.remove("bg-light")
+        item.classList.add("bg-primary", "text-white")
+
+        document.querySelector("#id_Time-time").value = item.innerHTML
+    }
+    // Функция окончена Time 
+
+    // Начало функции Date
+
+    // Получаем занятые даты из контекста
+    const bookedDates = {{ booked_dates|safe }};
+
+    var d = new Date();
+    d.setMonth(d.getMonth() + document.querySelector("#available_booking_months").value);
+
+    const disable_weekend = document.querySelector("#disable_weekend").value;
+    function rmWeekend(date) {
+        if (disable_weekend == "False") return ""
+        return (date.getDay() === 0 || date.getDay() === 6);
+    }
+    // Поле для даты заезда
+    flatpickr("#id_Date-check_in", {
+        minDate: "today",
+        maxDate: d,
+        disable: [rmWeekend].concat(bookedDates),  // Заблокировать выходные и занятые даты
+        shorthand: true,
+        "locale": {
+            "firstDayOfWeek": 1 // Начало недели с понедельника
+        },
+        onChange: function(selectedDates, dateStr, instance) {
+            // Когда выбрана дата заезда, обновляем минимальную дату выезда
+            var checkInDate = selectedDates[0];
+            flatpickr("#id_Date-check_out", {
+                minDate: checkInDate,
+                maxDate: d,
+                disable: [rmWeekend].concat(bookedDates),  // Заблокировать выходные и занятые даты
+                shorthand: true,
+                "locale": {
+                    "firstDayOfWeek": 1 // Начало недели с понедельника
+                }
+            });
+        }
+    });
+
+    // Поле для даты выезда
+    flatpickr("#id_Date-check_out", {
+        minDate: "today",
+        maxDate: d,
+        disable: [rmWeekend].concat(bookedDates),  // Заблокировать выходные и занятые даты
+        shorthand: true,
+        "locale": {
+            "firstDayOfWeek": 1 // Начало недели с понедельника
+        }
+    });
+    // Конец функции Date
+</script>
+{% endblock extra_script %}
