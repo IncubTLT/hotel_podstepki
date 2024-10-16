@@ -3,9 +3,6 @@ volumes:
   pg_logs:
   static:
   media:
-
-env_file:
-  - .env
   
 services:
   db:
@@ -19,8 +16,10 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   hotel:
-    image: incubtlt/hotel:latest
+    build: .
     platform: linux/amd64
+    env_file:
+      - .env
     volumes:
       - .:/app
       - static:/app/static/
