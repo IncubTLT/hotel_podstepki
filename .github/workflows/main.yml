@@ -47,7 +47,7 @@ jobs:
     - name: Push to DockerHub
       uses: docker/build-push-action@v4
       with:
-        context: .hotel_podstepki/
+        context: hotel_podstepki/
         push: true
         no-cache: true
         tags: ${{ secrets.DOCKER_USERNAME }}/hotel:latest
@@ -72,7 +72,7 @@ jobs:
     - name: Push to DockerHub
       uses: docker/build-push-action@v4
       with:
-        context: .nginx/
+        context: nginx/
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/hotel-nginx:latest
 
