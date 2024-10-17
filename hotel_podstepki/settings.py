@@ -101,7 +101,7 @@ POSTGRES = {
         'PORT': os.getenv('POSTGRES_PORT')
     }
 }
-DATABASE = SQLITE if DEBUG else POSTGRES
+DATABASES = SQLITE if DEBUG else POSTGRES
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
