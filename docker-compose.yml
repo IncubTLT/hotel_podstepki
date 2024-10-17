@@ -17,11 +17,9 @@ services:
 
   hotel:
     image: incubtlt/hotel:latest
-    platform: linux/amd64
     env_file:
       - .env
     volumes:
-      - .:/app
       - static:/app/static/
       - media:/app/media/
       - ./logs:/app/logs
