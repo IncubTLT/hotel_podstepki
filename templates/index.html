@@ -131,10 +131,9 @@
 
                 <!-- BEGIN .accommodation-block-wrapper -->
                 <div class="accommodation-block-wrapper accommodation-1-cols shb-clearfix">
-                    
+                {% for room in rooms %} 
                   <!-- BEGIN .accommodation-block -->
                   <div class="accommodation-block shb-clearfix">
-                    {% for room in rooms %}
                     <div class="accommodation-block-image">
                       <a href="{{ room.get_absolute_url }}"
                         rel="bookmark" title="{{ room.title }}">
@@ -168,12 +167,11 @@
                             Проверить наличие свободных мест
                         </a>
                       </div>
-                    {% endfor %}
                     </div>
 
                     <!-- END .accommodation-block -->
                   </div>
-
+                  {% endfor %}
                   <!-- END .accommodation-block-wrapper -->
                 </div>
 
