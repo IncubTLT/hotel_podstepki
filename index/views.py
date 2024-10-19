@@ -1,3 +1,6 @@
+from pathlib import Path
+
+from django.conf import settings
 from django.shortcuts import render
 from django.utils import timezone
 
@@ -37,7 +40,22 @@ def batherouse(request):
 
 
 def event(request):
-    return render(request, 'event.html')
+    if settings.DEBUG:
+        base_static_path = settings.STATICFILES_DIRS[0]
+    else:
+        base_static_path = settings.STATIC_ROOT
+
+    # Путь к папке с изображениями
+    images_path = Path(base_static_path) / 'images'
+
+    # Проверяем, существует ли директория с изображениями
+    if images_path.exists() and images_path.is_dir():
+        # Получаем список файлов в директории и фильтруем по наличию "pavilion" в имени
+        pavilion_photos = [f.name for f in images_path.iterdir() if 'pavilion' in f.name.lower() and f.suffix == '.jpeg']
+    else:
+        pavilion_photos = []
+
+    return render(request, 'event.html', {'pavilion_photos': pavilion_photos})
 
 
 def territory(request):
