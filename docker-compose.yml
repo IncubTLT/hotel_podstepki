@@ -37,8 +37,8 @@ services:
     volumes:
       - static:/app/static/
       - media:/app/media/
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-      - ./certbot/www/:/var/lib/letsencrypt/
+      - ./certbot/conf/:/etc/letsencrypt/:ro
+      - ./certbot/www/:/var/lib/letsencrypt/:ro
     ports:
       - '80:80'
       - '443:443'
